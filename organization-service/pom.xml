@@ -98,11 +98,20 @@
             <version>1.5.9</version>
         </dependency>
 
+        <!-- spring-cloud-sleuth是一个springCloud项目，他将关联ID装备到HTTP调用上
+         引入下面包完成的功能：
+         1：检查每个传入的HTTP服务，并确定调用中是否存在Spring Cloud Sleuth跟踪信息
+            ，如果Spring CLoud Sleuth跟踪数据确实存在，则将捕获传递到微服务的跟踪信息
+            并将跟踪信息提供给 服务以进行日志记录和处理
+         2：将spring cloud sleuth 跟踪信息添加到Spring MDC,以便微服务创建的每个日志语句都添加到日志中
+         3：将spring cloud sleuth 跟踪信息注入服务发出的每个出站HTTP调用以及Spring消息传递通道的消息中-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
 
+        <!--分布式日志追踪查询分析工具，与spring-cloud-sleuth配合使用，在需要的时候
+        把跟踪数据传输到zipkin-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-sleuth-core</artifactId>
